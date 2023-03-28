@@ -1,10 +1,15 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 
 
-from .models import Flat
+from .models import Flat, Complaint
 
 
-class Admin(admin.ModelAdmin):
+class ComplaintForm(admin.ModelAdmin):
+    raw_id_field = ['flat']
+
+
+class FlatForm(admin.ModelAdmin):
     search_fields = ['town', 'address', 'owner']
     readonly_fields = ['created_at']
     list_display = ['address', 'price', 'new_building', 'construction_year']
@@ -12,5 +17,5 @@ class Admin(admin.ModelAdmin):
     list_filter = ['new_building', 'rooms_number', 'has_balcony']
 
 
-admin.site.register(Flat, Admin)
-# admin.site.register(Flat)
+admin.site.register(Flat, FlatForm)
+admin.site.register(Complaint, ComplaintForm)

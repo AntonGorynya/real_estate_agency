@@ -9,7 +9,7 @@ def fill_new_building(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('property', '0002_auto_20230328_1217'),
+        ('property', '0003_auto_20230328_1217'),
     ]
 
     operations = [

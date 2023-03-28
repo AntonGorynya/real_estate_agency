@@ -47,13 +47,20 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+    likes = models.ManyToManyField(User)
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
 class Complaint(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='complains', null=True)
-    flat = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name='complains')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        related_name='complains',
+        null=True,
+        verbose_name='Пользователь'
+    )
+    flat = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name='complains', verbose_name='Квартира')
     text = models.TextField('Жалоба', help_text='Описание вашей проблемы')
 
     def __str__(self):

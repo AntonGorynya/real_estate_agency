@@ -2,7 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 
 
-from .models import Flat, Complaint
+from .models import Flat, Complaint, Owner
+
+
+class OwnerForm(admin.ModelAdmin):
+    raw_id_fields = ['owners_flats']
 
 
 class ComplaintForm(admin.ModelAdmin):
@@ -20,3 +24,4 @@ class FlatForm(admin.ModelAdmin):
 
 admin.site.register(Flat, FlatForm)
 admin.site.register(Complaint, ComplaintForm)
+admin.site.register(Owner, OwnerForm)

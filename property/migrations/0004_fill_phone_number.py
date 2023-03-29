@@ -18,7 +18,7 @@ def move_backward(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('property', '0005_auto_20230328_1626'),
+        ('property', '0003_fill_new_building'),
     ]
 
     operations = [

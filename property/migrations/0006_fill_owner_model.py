@@ -22,7 +22,7 @@ def move_backward(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('property', '0006_auto_20230329_2138'),
+        ('property', '0005_auto_20230330_1518'),
     ]
 
     operations = [

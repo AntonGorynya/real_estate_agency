@@ -9,9 +9,9 @@ class AdminInline(admin.StackedInline):
     model = Flat.owner_set.through
     raw_id_field = ['flat', 'owner']
 
+
 class OwnerForm(admin.ModelAdmin):
     raw_id_fields = ['owners_flats']
-
 
 
 class ComplaintForm(admin.ModelAdmin):

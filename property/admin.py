@@ -7,7 +7,7 @@ from .models import Flat, Complaint, Owner
 
 class AdminInline(admin.StackedInline):
     model = Flat.owner_set.through
-    raw_id_fields = ['flat', 'owner']
+    raw_id_fields = ['owner']
 
 
 class OwnerForm(admin.ModelAdmin):

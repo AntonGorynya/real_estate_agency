@@ -4,7 +4,7 @@ from phonenumbers import is_valid_number, parse
 
 def fill_phone_number(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
         phonenumber = flat.owners_phonenumber
         if is_valid_number(parse(phonenumber, 'RU')):
             flat.owner_pure_phone = PhoneNumber.from_string(phonenumber, region='RU')

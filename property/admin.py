@@ -6,28 +6,25 @@ from .models import Flat, Complaint, Owner
 
 
 class AdminInline(admin.StackedInline):
-    model = Flat.owner_set.through
+    model = Flat.owners.through
     raw_id_fields = ['owner']
 
 
+@admin.register(Owner)
 class OwnerForm(admin.ModelAdmin):
-    raw_id_fields = ['owners_flats']
+    raw_id_fields = ['flats']
 
 
+@admin.register(Complaint)
 class ComplaintForm(admin.ModelAdmin):
     raw_id_fields = ['flat']
 
-
+@admin.register(Flat)
 class FlatForm(admin.ModelAdmin):
-    search_fields = ['town', 'address', 'owners']
+    search_fields = ['town', 'address']
     readonly_fields = ['created_at']
     list_display = ['address', 'price', 'new_building', 'construction_year']
     list_editable = ['new_building']
     list_filter = ['new_building', 'rooms_number', 'has_balcony']
-    raw_id_fields = ['likes']
+    raw_id_fields = ['likes', 'owners']
     inlines = [AdminInline]
-
-
-admin.site.register(Flat, FlatForm)
-admin.site.register(Complaint, ComplaintForm)
-admin.site.register(Owner, OwnerForm)

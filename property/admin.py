@@ -12,7 +12,7 @@ class AdminInline(admin.StackedInline):
 
 @admin.register(Owner)
 class OwnerForm(admin.ModelAdmin):
-    raw_id_fields = ['owners_flats']
+    raw_id_fields = ['flats']
 
 
 @admin.register(Complaint)
